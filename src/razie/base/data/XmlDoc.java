@@ -19,8 +19,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-
-
 /**
  * represents an xml document - generally for configuration. For dynamic data, use the XmlDb class.
  * 
@@ -129,15 +127,6 @@ public class XmlDoc {
      * 
      * @return never null
      */
-    public List<Element> xpl(String path) {
-        return RiXmlUtils.getNodeList(root, path, prefixes);
-    }
-
-    /**
-     * return a list of all elements in specified path
-     * 
-     * @return never null
-     */
     public static List<Element> xpl(Element node, String path) {
         return RiXmlUtils.getNodeList(node, path, null);
     }
@@ -188,8 +177,17 @@ public class XmlDoc {
      * @return never null
      */
     public String getOptNodeVal(String path) {
-        Element e = getEntity (path);
+        Element e = xpe (path);
         return e == null ? "" : RiXmlUtils.getOptNodeVal(e);
+    }
+
+    /**
+     * return a list of all elements in specified path
+     * 
+     * @return never null
+     */
+    public List<Element> xpl(String path) {
+        return RiXmlUtils.getNodeList(root, path, prefixes);
     }
 
     /**
@@ -199,7 +197,7 @@ public class XmlDoc {
      * @name identifies the name attribute of the element - could also be part of xpath instead
      * @return never null
      */
-    public Element getEntity(String path) {
+    public Element xpe(String path) {
         return (Element) RiXmlUtils.getNode(root, path, prefixes);
     }
 
@@ -210,7 +208,7 @@ public class XmlDoc {
      * @name identifies the name attribute of the element - could also be part of xpath instead
      * @return never null
      */
-    public String getAttr(String path) {
+    public String xpa(String path) {
         return RiXmlUtils.getStringValue(root, path, null);
     }
 

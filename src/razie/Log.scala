@@ -40,7 +40,8 @@ class StupidLog extends Log {
  * @author razvanc
  */
 object Log extends Log {
-   val impl = new StupidLog()
+   // overwrite this to use your own logging
+   var impl = new StupidLog()
    
    override def trace (f : => Any) = impl.trace(f)
    override def log   (msg:String, t:Throwable=null) = impl.log(msg, t)

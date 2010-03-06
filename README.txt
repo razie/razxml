@@ -14,8 +14,16 @@ Why?
 ----
 Well, the stupid warning covers actual errors. Also, although the XML libraries are fluffy 99% of the time one can make do with only 3 calls: xpe, xpl, xpa.
 
-
 Details
 -------
 Use Xmldoc as much as possible to load and manipulate XML documents. Stick to the 3 calls using XPATH.
+
+To build this, 
+1. modify razie.properties to point to your real workspace
+2. cd razxml
+3. ant clean build jar
+
+After the steps above, you'll have a new jar file in razxml/dist 
+
+Please fork the git repository and commit changes - if good, I will pull them into main.
 
