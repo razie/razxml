@@ -28,8 +28,33 @@ import org.w3c.dom.NodeList;
  * <p>
  * Registry: when decoupling loading xml docs from their actual use in code
  * 
- * TODO this class is quite dedicated - I should document in more detail how I see xml docs...
+ * <p>Sample: d = new XmlDoc().load ("mydoc", new URL("http://...."))
+ * <p>If the doc is in the classpath, get an URL like so:
  * 
+ * <code>
+ * new XmlDoc().load("docname", singleton.getClass().getResource(DFLT_CATALOG));
+ * </code>
+ * 
+ * <p>
+ * If the document's root node includes an attribute "razieReloadMillis" then the document will be 
+ * reloaded if touched.
+ * 
+ * <p>Usage: each configuration document is normally registered in the Registry like so:
+ * 
+ * <code>
+ * XmlDoc.Reg.docAdd ("userConfig", new XmlDoc().load("userConfig", new URL("file://........")))
+ * </code>
+ *
+ * <p>Then, in your code, use it like so: 
+ * <code>
+ *  for (Element e : Reg.doc(MediaConfig.MEDIA_CONFIG).xpl(
+ *               "/config/storage/host[@name='" + Agents.me().name + "']/media")) {
+ *          location = e.getAttribute("localdir");
+ *          ...
+ * </code>
+ * 
+ * <p>Do me a favor and use only the xpl/xpe/xpa accessors, please...
+ *
  * @author razvanc
  */
 public class XmlDoc {
