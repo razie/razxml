@@ -94,7 +94,7 @@ class RazElementJava (val e:org.w3c.dom.Element) extends RazElement {
 //      val l = XmlDoc.listEntities (e, path)
 //      val lre : scala.collection.mutable.Buffer[Element] = scala.collection.JavaConversions.asBuffer(l)
     
-     (for (val x <- XmlDoc.xpl (e, path))
+     (for (x <- XmlDoc.xpl (e, path))
        yield new RazElementJava(x)).toList
    }
   
