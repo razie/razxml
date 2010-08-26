@@ -10,4 +10,7 @@
         <antcall target="build"/>
     </target>
 
+    <target name="dist" depends="jar">
+    </target>
+
 </project>
