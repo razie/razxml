@@ -3,11 +3,9 @@
  *   )   / /(__)\  / /_  _)(_  )__) \__ \    )___/ )(__)(  ) _ <     README.txt
  *  (_)\_)(__)(__)(____)(____)(____)(___/   (__)  (______)(____/    LICENSE.txt
  */
-package com.razie.pub.base.data
+package razie.base.data
 
 import org.w3c.dom._
-import razie.base.data.XmlDoc
-import razie.base.data.RiXmlUtils
 
 // TODO need to optimize these - i convert to RazE stuff all the time, no caching - should use a map for caching? is that useful?
 
