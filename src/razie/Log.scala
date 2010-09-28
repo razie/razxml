@@ -28,12 +28,13 @@ trait Log {
 } 
 
 class StupidLog extends Log {
-   override def trace (f : => Any) = println ("DEBUG" + f) 
-   override def log   (msg:String, t:Throwable=null) = println ("LOG: " + msg + t)
-   override def alarm   (msg:String, t:Throwable=null) = println ("ALARM: " + msg, t)
-   override def audit   (msg:String, t:Throwable=null) = println ("AUDIT: " + msg, t)
-   override def error   (msg:String, t:Throwable=null) = { println(msg, t); throw t }
-}
+  override def trace(f: => Any) = println ("DEBUG: " + f)
+    override def log(msg: String, t: Throwable = null) = println ("LOG: " + msg + t)
+      override def alarm(msg: String, t: Throwable = null) = println ("ALARM: " + msg, t)
+        override def audit(msg: String, t: Throwable = null) = println ("AUDIT: " + msg, t)
+          override def error(msg: String, t: Throwable = null) = { println(msg, t); throw t }
+          }
+          
 
 /** some logging basics 
  * 
@@ -69,5 +70,23 @@ object Log extends Log {
 }
 
 object Debug {
-   def apply (f : => Any) = Log.trace(f)
-}
+  def apply(f: => Any) = Log.trace(f)
+  }
+
+  object Audit {
+    def apply(f: => Any) = Log.audit (f.toString)
+    }
+
+    object Warn {
+      def apply(f: => Any) = Log.alarm (f.toString)
+      }
+
+      object Alarm {
+        def apply(f: => Any) = Log.alarm (f.toString)
+        }
+
+        object Error {
+          def apply(f: => Any) = Log.error (f.toString)
+          }
+
+
